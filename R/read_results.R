@@ -59,7 +59,7 @@ read_known_results <- function(path, homer_dir = TRUE) {
                            into = c('motif_name', 'experiment', 'database'),
                            sep = '/', 
                            extra = 'drop') %>%
-        dplyr::mutate(log_p_value = "-log10(log_p_value)")
+        dplyr::mutate(log_p_value = -log10(log_p_value))
     parsed <- .parse_homer_subfields(tmp) %>%
         dplyr::mutate(dplyr::across(contains('pct'), .parse_pcts))
 
